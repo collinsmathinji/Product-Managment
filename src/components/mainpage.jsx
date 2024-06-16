@@ -65,18 +65,22 @@ const SalesGraph = () => {
           <h3>Total Sales: {totalSales}</h3>
         </div>
       </div>
-      <div style={{ width: '25%', padding: '20px', backgroundColor: '#f4f4f4' }}>
-        <h3>Highest Sales Individual</h3>
+      <div style={{ width: '25%'}} className='p-2 bg-blue-200'>
+        <h3 className='text-2xl font-bold'>Highest Sales Individual</h3>
+        <div className='p-6'>
         <p>Name: {highestSalesIndividual.name}</p>
         <p>Total Sales: {highestSalesIndividual.totalSales}</p>
-        <h3>All Individuals Sales</h3>
+        </div>
+        <h3 className='text-2xl font-bold '>All Individuals Sales</h3>
+        <div className='p-6'>
         {
           data.salesByIndividual.map((individual, index) => (
-            <div key={index}>
+            <div key={index} className='border-b-4 p-3'>
               {individual.name}: {individual.sales.reduce((acc, sale) => acc + sale.totalSales, 0)}
             </div>
           ))
         }
+        </div>
       </div>
     </div>
   );
