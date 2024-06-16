@@ -8,7 +8,7 @@ console.log(menuItems)
             {menuItems.map((item,index)=>{
                 return(
                  <div className="flex flex-col  justify-evenly text-xl p-3 h-full">
-                    <p key={index} className="mb-2 border-b-2 p-3 hover:bg-blue-300 flex flex-row gap-4">{item.icon}{item.text}</p>
+                    <p key={index} className="mb-2 border-b-2 p-3 hover:bg-blue-300 hover:rounded-lg hover:cursor-pointer flex flex-row gap-4">{item.icon}{item.text}</p>
                 </div>
                 )
             })}

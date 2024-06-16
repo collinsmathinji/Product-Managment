@@ -5,7 +5,7 @@ import data from './data.json'; // Adjust the path if needed
 const SalesGraph = () => {
   const [chartData, setChartData] = useState([]);
   const [totalSales, setTotalSales] = useState(0);
-  const [highestSalesIndividual, setHighestSalesIndividual] = useState({ name: '', totalSales: 0 });
+  const [highestSalesIndividual, setHighestSalesIndividual] = useState({ name: '',image:'',totalSales: 0 });
 
   useEffect(() => {
     if (data && Array.isArray(data.salesByIndividual)) {
@@ -14,7 +14,7 @@ const SalesGraph = () => {
       // Calculate total sales per individual
       const totalSalesByIndividual = salesData.map(individual => {
         const totalSales = individual.sales.reduce((acc, sale) => acc + sale.totalSales, 0);
-        return { name: individual.name, totalSales };
+        return { name: individual.name,image:individual.image, totalSales };
       });
 
       // Sort by totalSales in descending order and take the top 5 individuals
@@ -65,18 +65,27 @@ const SalesGraph = () => {
           <h3>Total Sales: {totalSales}</h3>
         </div>
       </div>
-      <div style={{ width: '25%'}} className='p-2 bg-blue-200'>
-        <h3 className='text-2xl font-bold'>Highest Sales Individual</h3>
-        <div className='p-6'>
+      <div style={{ width: '25%'}} className='p-2 bg-blue-200 rounded-lg'>
+        <h3 className='text-2xl font-bold mt-3'>Highest Sales Individual</h3>
+        <div className='p-4 bg-white rounded-lg text-green-500 font-semibold text-xl mt-4 shadow-lg'>
+        <img
+                src={highestSalesIndividual.image}
+                alt="profile"
+                className='rounded-lg mb-5'
+              />
         <p>Name: {highestSalesIndividual.name}</p>
-        <p>Total Sales: {highestSalesIndividual.totalSales}</p>
+        <p className=''>Total Sales: {highestSalesIndividual.totalSales}</p>
         </div>
-        <h3 className='text-2xl font-bold '>All Individuals Sales</h3>
-        <div className='p-6'>
+        <h3 className='text-2xl font-bold mt-3'>All Individuals Sales</h3>
+        <div className='p-6 bg-white rounded-lg mt-4 shadow-lg'>
         {
           data.salesByIndividual.map((individual, index) => (
-            <div key={index} className='border-b-4 p-3'>
-              {individual.name}: {individual.sales.reduce((acc, sale) => acc + sale.totalSales, 0)}
+            <div key={index} className='border-b-4 p-3 flex flex-row hover:bg-blue-400 hover:rounded-lg hover:cursor-pointer'>
+              <img
+                src={individual.image}
+                alt="profile"
+                className='w-10 h-10 rounded-full'
+              /><p className='mt-4 ml-3'>{individual.name}: {individual.sales.reduce((acc, sale) => acc + sale.totalSales, 0)}</p>
             </div>
           ))
         }

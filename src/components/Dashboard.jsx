@@ -7,7 +7,7 @@ import { TbTargetArrow } from "react-icons/tb";
 import { CgProfile } from "react-icons/cg";
 import { MdAccountTree } from "react-icons/md";
 const Dashboard=({children})=>{
-    const[isSideBarOpen,setIsSideBarOpen]=useState(false)
+    const[isSideBarOpen,setIsSideBarOpen]=useState(true)
     const HandleSideBar=()=>{
         setIsSideBarOpen(!isSideBarOpen)
     }
@@ -25,12 +25,12 @@ return(
 </div>
 <div className="flex lg:flex-row">
    
-<div className="w-1/4 bg-gray-300">
+<div className="w-1/5 bg-gray-300 rounded-lg">
 {isSideBarOpen && 
     <SideBar menuItems={menuItems}/>
 }
     </div>
-    <div className="w-3/4">{children}</div>
+    <div className="w-4/5">{children}</div>
 
 </div>
 </>
