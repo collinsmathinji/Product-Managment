@@ -1,0 +1,26 @@
+{
+  "salesByIndividual": [
+    {
+      "name": "John Doe",
+      "sales": [
+        { "item": "Wood", "totalSales": 40 },
+        { "item": "Steel", "totalSales": 60 },
+        { "item": "Concrete", "totalSales": 80 }
+      ]
+    },
+    {
+      "name": "Jane Smith",
+      "sales": [
+        { "item": "Glass", "totalSales": 50 },
+        { "item": "Brick", "totalSales": 30 },
+        { "item": "Plastic", "totalSales": 20 }
+      ]
+    },
+    {
+      "name": "Alex Johnson",
+      "sales": [
+        { "item": "Copper", "totalSales": 70 }
+      ]
+    }
+  ]
+}

@@ -4,7 +4,7 @@ const SideBar=({menuItems})=>{
 console.log(menuItems)
     return(
        <>
-       <div className="bg-gray-300">
+       <div className="">
             {menuItems.map((item,index)=>{
                 return(
                  <div className="flex flex-col  justify-evenly text-xl p-3 h-full">
