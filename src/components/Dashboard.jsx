@@ -12,11 +12,11 @@ const Dashboard=({children})=>{
         setIsSideBarOpen(!isSideBarOpen)
     }
     const menuItems = [
-        { icon: <MdDashboard className="hover:bg-green-500" />, text: 'Dashboard', to: '/Summits', colorClass: 'icon' },
-        { icon: <MdAccountBalanceWallet/>, text: "Sales", to: '/Contacts', colorClass: 'icon' },
-        { icon: <TbTargetArrow  />, text: 'Items Sold', to: '/Ambassador-info', colorClass: 'icon' },
-        { icon: < MdAccountTree />, text: 'UnAccounted', to: '/Leadership', colorClass: 'icon' },
-        { icon: < CgProfile  />, text: 'User Profile', to: '/Leadership', colorClass: 'icon' },
+        { icon: <MdDashboard className="hover:bg-green-500" />, text: 'Dashboard', to: '/', colorClass: 'icon' },
+        { icon: <MdAccountBalanceWallet/>, text: "Sales", to: '/Sales', colorClass: 'icon' },
+        { icon: <TbTargetArrow  />, text: 'Items Sold', to: '/', colorClass: 'icon' },
+        { icon: < MdAccountTree />, text: 'UnAccounted', to: '/', colorClass: 'icon' },
+        { icon: < CgProfile  />, text: 'User Profile', to: '/', colorClass: 'icon' },
     ];
 return(
 <>
