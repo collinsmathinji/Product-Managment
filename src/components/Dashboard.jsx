@@ -12,7 +12,7 @@ const Dashboard=({children})=>{
         setIsSideBarOpen(!isSideBarOpen)
     }
     const menuItems = [
-        { icon: <MdDashboard className="hover:bg-green-500" />, text: 'Dashboard', to: '/', colorClass: 'icon' },
+        { icon: <MdDashboard className="hover:bg-green-500" />, text: 'Dashboard', to: '/Dashboard', colorClass: 'icon' },
         { icon: <MdAccountBalanceWallet/>, text: "Sales", to: '/Sales', colorClass: 'icon' },
         { icon: <TbTargetArrow  />, text: 'Items Sold', to: '/', colorClass: 'icon' },
         { icon: < MdAccountTree />, text: 'UnAccounted', to: '/', colorClass: 'icon' },
