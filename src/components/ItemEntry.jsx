@@ -33,8 +33,8 @@ const ItemEntry = () => {
       <div className="p-4 border bg-gray-400 w-1/3 flex flex-col justify-center rounded-lg">
         <h1 className="text-2xl font-bold">Enter Items Details</h1>
         <div className="mb-4">
-          <label className="block mb-2 text-sm" htmlFor="image">
-            Company Logo
+          <label className="block mb-2 text-xl mt-4 font-medium" htmlFor="image">
+            Item Image
           </label>
           <div className="relative border rounded-md py-2 border-dashed h-40  cursor-pointer">
             <input
@@ -43,7 +43,7 @@ const ItemEntry = () => {
               name="itemImage"
               accept="image/*" // Allow only image files
               onChange={handleImageChange}
-              className="absolute inset-0 w-full h-full opacity-0 border-gray-700 text-sm"
+              className="absolute inset-0 w-full h-full opacity-0 border-gray-700 text-sm hover:cursor-pointer"
             />
             {previewUrl ? (
               <img
@@ -63,7 +63,7 @@ const ItemEntry = () => {
           </div>
         </div>
        
-          <p className="mt-4 mb-2">Name</p>
+          <p className="mt-4 mb-2 font-medium">Name</p>
           <input
             name="itemName"
             placeholder="e.g Cup"
@@ -71,7 +71,7 @@ const ItemEntry = () => {
             value={formData.itemName}
             onChange={handleChange}
           />
-          <p className="mt-4 mb-2">Number</p>
+          <p className="mt-4 mb-2 font-medium">Number</p>
           <input
             name="numberOfItems"
             type="number"
@@ -80,7 +80,7 @@ const ItemEntry = () => {
             value={formData.numberOfItems}
             onChange={handleChange}
           />
-          <p className="mt-4 mb-2">Buying Price</p>
+          <p className="mt-4 mb-2 font-medium">Buying Price</p>
           <input
             name="itemBuyingPrice"
             type="number"
@@ -89,7 +89,7 @@ const ItemEntry = () => {
             value={formData.itemBuyingPrice}
             onChange={handleChange}
           />
-          <p className="mt-4 mb-2">Selling Price</p>
+          <p className="mt-4 mb-2 font-medium">Selling Price</p>
           <input
             name="itemSellingPrice"
             type="number"
@@ -98,7 +98,7 @@ const ItemEntry = () => {
             value={formData.itemSellingPrice}
             onChange={handleChange}
           />
-          <p className="mt-4 mb-2">Description</p>
+          <p className="mt-4 mb-2 font-medium">Description</p>
           <input
             name="Description"
             placeholder="e.g A nice cup"

@@ -11,7 +11,7 @@ const Navbar=({sideBar})=>{
      </div>
     <div >
     <p className="lg:hidden" onClick={sideBar}><GiHamburgerMenu className="w-8 h-8"/></p>
-    <p className="hidden lg:block"><CgProfile className="w-8 h-8"/></p>
+    <p className="hidden lg:block hover:cursor-pointer"><CgProfile className="w-8 h-8"/></p>
     </div>
   </div>
   </>

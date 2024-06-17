@@ -66,6 +66,7 @@ const SalesGraph = () => {
         </div>
       </div>
       <div style={{ width: '25%'}} className='p-2 bg-blue-200 rounded-lg'>
+        <h1 className='text-2xl font-bold mt-3 text-blue-800'>Weekly Review:</h1>
         <h3 className='text-2xl font-bold mt-3'>Highest Sales Individual</h3>
         <div className='p-4 bg-white rounded-lg text-green-500 font-semibold text-xl mt-4 shadow-lg'>
         <img
