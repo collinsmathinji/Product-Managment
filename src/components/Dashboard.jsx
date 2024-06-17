@@ -30,7 +30,7 @@ return(
     <SideBar menuItems={menuItems}/>
 }
     </div>
-    <div className="w-4/5">{children}</div>
+    <div className="w-4/5 h-[100%]">{children}</div>
 
 </div>
 </>
