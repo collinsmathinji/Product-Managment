@@ -13,7 +13,7 @@ const navigate=useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/')
+    navigate('/Dashboard')
     console.log('Login data:', formData);
   };
 
