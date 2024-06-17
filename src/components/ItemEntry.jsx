@@ -99,10 +99,10 @@ const ItemEntry = () => {
             onChange={handleChange}
           />
           <p className="mt-4 mb-2 font-medium">Description</p>
-          <input
+          <textArea
             name="Description"
             placeholder="e.g A nice cup"
-            className="rounded-md p-2"
+            className="rounded-md p-2 max-h-56 min-h-56"
             value={formData.Description}
             onChange={handleChange}
           />
