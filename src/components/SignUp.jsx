@@ -77,7 +77,7 @@ const navigate=useNavigate()
           Already have an account?{' '}
           <span
             className="text-blue-600 cursor-pointer"
-            onClick={onToggle}
+            onClick={()=>(navigate('/'))}
           >
             Login
           </span>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-const Login = ({ onToggle }) => {
+const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -61,7 +61,7 @@ const navigate=useNavigate()
           Don't have an account?{' '}
           <span
             className="text-blue-600 cursor-pointer"
-            onClick={onToggle}
+            onClick={()=>(navigate('/SignUp'))}
           >
             Sign up
           </span>
