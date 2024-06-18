@@ -14,8 +14,8 @@ const Dashboard=({children})=>{
     const menuItems = [
         { icon: <MdDashboard className="hover:bg-green-500" />, text: 'Dashboard', to: '/Dashboard', colorClass: 'icon' },
         { icon: <MdAccountBalanceWallet/>, text: "Sales", to: '/Sales', colorClass: 'icon' },
-        { icon: <TbTargetArrow  />, text: 'Items Sold', to: '/', colorClass: 'icon' },
-        { icon: < MdAccountTree />, text: 'UnAccounted', to: '/', colorClass: 'icon' },
+        { icon: <TbTargetArrow  />, text: 'Items Taken', to: '/Taken', colorClass: 'icon' },
+        { icon: < MdAccountTree />, text: 'Returned', to: '/Returned', colorClass: 'icon' },
         { icon: < CgProfile  />, text: 'User Profile', to: '/', colorClass: 'icon' },
     ];
 return(

@@ -1,15 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const EmployeeDetails = () => {
   const [employees, setEmployees] = useState([]);
   const [employeeFormData, setEmployeeFormData] = useState({
     employeeName: '',
     employeeEmail: '',
-    employeeImage: ''
+    employeeImage: '',
+    employerId: '',
   });
   const [previewUrl, setPreviewUrl] = useState(null);
   const [errors, setErrors] = useState({});
+  const [employers, setEmployers] = useState([]);
 
+  useEffect(() => {
+    // Fetch employers
+    const fetchEmployers = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/employees/employers');
+        setEmployers(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchEmployers();
+  }, []);
+console.log(employers)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEmployeeFormData({ ...employeeFormData, [name]: value });
@@ -24,21 +41,36 @@ const EmployeeDetails = () => {
     }
   };
 
-  const handleAddEmployee = (e) => {
+  const handleAddEmployee = async (e) => {
     e.preventDefault();
-    // Add new employee to the employees array
-    setEmployees([...employees, employeeFormData]);
-    // Reset the form
-    setEmployeeFormData({
-      employeeName: '',
-      employeeEmail: '',
-      employeeImage: ''
-    });
-    setPreviewUrl(null);
-  };
+    const formData = new FormData();
+    formData.append('name', employeeFormData.employeeName);
+    formData.append('email', employeeFormData.employeeEmail);
+    formData.append('image', employeeFormData.employeeImage);
+    formData.append('employerId', employeeFormData.employerId);
 
+    try {
+      const response = await axios.post('http://localhost:5000/api/employees/add', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      setEmployees([...employees, response.data]);
+      setEmployeeFormData({
+        employeeName: '',
+        employeeEmail: '',
+        employeeImage: '',
+        employerId: '',
+      });
+      setPreviewUrl(null);
+    } catch (error) {
+      console.error(error);
+      setErrors(error.response.data.errors);
+    }
+  };
+console.log(employeeFormData)
   return (
-    <div className="flex flex-col items-center justify-center h-screen ">
+    <div className="flex flex-col items-center justify-center h-screen">
       <div className="p-4 border bg-gray-400 w-1/4 flex flex-col justify-center rounded-lg">
         <h1 className="text-2xl font-bold">Enter Employee Details</h1>
         <form onSubmit={handleAddEmployee}>
@@ -74,7 +106,7 @@ const EmployeeDetails = () => {
             <label className="block mb-2 text-sm" htmlFor="employeeImage">
               Employee Image
             </label>
-            <div className="relative border rounded-md py-2 border-dashed h-40  cursor-pointer">
+            <div className="relative border rounded-md py-2 border-dashed h-40 cursor-pointer">
               <input
                 type="file"
                 id="employeeImage"
@@ -99,10 +131,26 @@ const EmployeeDetails = () => {
               )}
             </div>
           </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white rounded-md p-2"
-          >
+          <div className="mb-4">
+            <label className="block mb-2 text-sm" htmlFor="employerId">
+              Employer
+            </label>
+            <select
+              name="employerId"
+              id="employerId"
+              className="rounded-md p-2 w-full"
+              value={employeeFormData.employerId}
+              onChange={handleChange}
+            >
+              <option value="">Select Employer</option>
+              {employers.map((employer) => (
+                <option key={employer._id} value={employer._id} className='bg-blue-300'>
+                  {employer.email}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button type="submit" className="w-full bg-blue-600 text-white rounded-md p-2">
             Add Employee
           </button>
         </form>

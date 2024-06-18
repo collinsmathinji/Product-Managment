@@ -1,19 +1,31 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+  const [message,setMessage]=useState('')
 const navigate=useNavigate()
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate('/Dashboard')
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/login',{ email: formData.email,
+        password: formData.password,});
+      setMessage('Signup successful!');
+      localStorage.setItem('token', response.data.token);
+  localStorage.setItem('email', response.data.email);
+      navigate('/Dashboard')
+  } catch (error) {
+      setMessage(error.response.data.error);
+      console.log(error)
+  }
     console.log('Login data:', formData);
   };
 
@@ -57,6 +69,7 @@ const navigate=useNavigate()
             Login
           </button>
         </form>
+        <p className='font-semibold text-red-800'>{message}</p>
         <p className="mt-4">
           Don't have an account?{' '}
           <span
